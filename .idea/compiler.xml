@@ -7,15 +7,28 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="address-microservice" />
+        <module name="lra-orchestrator" />
+        <module name="lra-saga" />
         <module name="anagrafe-microservice" />
+        <module name="order-service" />
+        <module name="address-microservice" />
+        <module name="narayana-lra-quickstart" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="devconf2019-lra" target="1.8" />
+      <module name="narayana-lra-coordinator" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="address-microservice" options="-parameters" />
       <module name="anagrafe-microservice" options="-parameters" />
+      <module name="lra-orchestrator" options="-parameters" />
+      <module name="lra-saga" options="-parameters" />
+      <module name="narayana-lra-coordinator" options="-parameters" />
+      <module name="narayana-lra-quickstart" options="-parameters" />
+      <module name="order-service" options="-parameters" />
     </option>
   </component>
 </project>

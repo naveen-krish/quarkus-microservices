@@ -5,6 +5,10 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/narayana-lra-coordinator/pom.xml" />
+        <option value="$PROJECT_DIR$/lra-saga/pom.xml" />
+        <option value="$PROJECT_DIR$/devconf2019-lra-master/pom.xml" />
+        <option value="$PROJECT_DIR$/lra-orchestrator/pom.xml" />
       </list>
     </option>
   </component>
