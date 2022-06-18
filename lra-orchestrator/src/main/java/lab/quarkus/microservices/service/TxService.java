@@ -65,6 +65,11 @@ public class TxService {
         rollbackClient.close();
     }
 
+//    @Transactional
+//    Response invokeAnagrafe(String lraIdUrl,String payLoad){
+//
+//
+//    }
     @Transactional
     public Response invokeTx(String lraIdUrl, Map payload) {
 
@@ -86,7 +91,7 @@ public class TxService {
         Workflow workflow = worflowService.getWorkflowByName(workflowName);
         worflowService.updateWorkflowRecord(workflow.getId(), txPayload, lraIdUrl);
         boolean isSagaCancelled = worflowService.isSagaCancelled(workflowName,lraIdUrl);
-      System.out.println(" SagaStatus inside TxMethod  cancelledStatus -> " + isSagaCancelled);
+  //    System.out.println(" SagaStatus inside TxMethod  cancelledStatus -> " + isSagaCancelled);
 ////       if( sagaStatus != null) {
 ////           System.out.println(" SagaStatus -> " + sagaStatus.getSagaStatus());
 ////       }else{
@@ -108,7 +113,7 @@ public class TxService {
                     forwardActivity.setLraIdUrl(lraIdUrl);
                     url = forwardActivity.getActivityUrl();
 
-                     System.out.println(" forwardActivity.getActivityRetryDoneCount() -> " + forwardActivity.getActivityRetryDoneCount() + " forwardActivity.getActivityRetryCount() -> " + forwardActivity.getActivityRetryCount()+" forwardActivity.isInvoked() -> "+forwardActivity.isInvoked());
+             //        System.out.println(" forwardActivity.getActivityRetryDoneCount() -> " + forwardActivity.getActivityRetryDoneCount() + " forwardActivity.getActivityRetryCount() -> " + forwardActivity.getActivityRetryCount()+" forwardActivity.isInvoked() -> "+forwardActivity.isInvoked());
                     if ((!forwardActivity.isInvoked() && forwardActivity.getActivityRetryCount() == 0) || (forwardActivity.getActivityRetryDoneCount() < forwardActivity.getActivityRetryCount() && !forwardActivity.getActivityStatus().equals(SagaStatus.ACTIVITY_COMPLETED.name()))) {
 
                         if (!forwardActivity.isInvoked()) {
