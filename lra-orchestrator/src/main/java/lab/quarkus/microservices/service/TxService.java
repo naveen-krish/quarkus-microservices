@@ -131,7 +131,10 @@ public class TxService {
                         isInvoked = true;
                         worflowService.saveForwardActivity(forwardActivity);
                         txTarget = txClient.target(url);
-                        txResponse = txTarget.request().post(Entity.entity(txPayload, MediaType.APPLICATION_JSON_TYPE));
+                        txResponse = txTarget.request(MediaType.APPLICATION_JSON)
+                                .header("x-idempotency-id",lraIdUrl)
+                                .post(Entity.entity(txPayload, MediaType.APPLICATION_JSON_TYPE));
+
 
                         String response = txResponse.readEntity(String.class);
                         LOG.log(Level.INFO, " [ {0} ] TRANSACTION API RESPONSE ->  [ {1} ] ", new Object[]{workflowName, response});
@@ -139,7 +142,6 @@ public class TxService {
                         forwardActivity.setResponseData(responseObj.toString());
                         forwardActivity.setActivityStatus(SagaStatus.ACTIVITY_COMPLETED.name());
                     }
-
                 }
             } catch (Exception e) {
                 if (activityRetryDoneCount == 0) {
