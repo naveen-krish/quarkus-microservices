@@ -33,26 +33,12 @@ public class LRATxCoordinator {
     TxService txService;
     @Inject
     WorkflowService workflowService;
-    String sagaName = "AnagrafeSaga";
+    String sagaName = "MicroServiceSaga";
 
-//    @Status
-//    @Path("/status")
-//    @GET
-//    public Response status(@HeaderParam(LRA_HTTP_CONTEXT_HEADER) String lraId) {
-//       if(workflowService.isTxPending(lraId)) {
-//           System.out.println(" Tx Pending -> True ");
-//           return Response.ok().entity(ParticipantStatus.Compensating.name()).build();
-//       }else{
-//           System.out.println(" Tx Pending -> False ");
-//           return Response.ok().entity(ParticipantStatus.Compensated.name()).build();
-//       }
-//
-//    }
+
 
     @POST
-//    @Consumes({MediaType.APPLICATION_JSON})
-//    @Produces({MediaType.APPLICATION_JSON})
-    @Path("/register")
+   @Path("/register")
     // public String register(@HeaderParam(LRA_HTTP_CONTEXT_HEADER) String lraIdUrl, String workflowSteps) {
     public String register(String workflowSteps) {
 
